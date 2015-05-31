@@ -10,7 +10,7 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
-from ..analytics import Algorithm 
+from ..utils import Algorithm 
 
 import time, os
 from sklearn.cluster import KMeans

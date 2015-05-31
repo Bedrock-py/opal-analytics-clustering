@@ -10,7 +10,7 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
-from ..analytics import Algorithm 
+from ..utils import Algorithm 
 import numpy as np
 import time, os, json
 import scipy.sparse as sps
