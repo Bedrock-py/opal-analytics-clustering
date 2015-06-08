@@ -10,7 +10,7 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
-from ..utils import Algorithm 
+from analytics.utils import Algorithm 
 from scipy.cluster.hierarchy import linkage, fcluster
 import numpy as np
 import time, os

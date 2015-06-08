@@ -10,7 +10,7 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
-from ..utils import Algorithm 
+from analytics.utils import Algorithm 
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
 
