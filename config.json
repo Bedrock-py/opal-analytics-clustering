@@ -1,0 +1,14 @@
+{ "opal-analytics-clustering":
+        {
+    	    "description": "Default clustering algorithms",
+            "host": "github.gatech.edu",
+            "repo": "Bedrock/opal-analytics-clustering.git",
+            "units": "Dbscan.py Gaussian.py Hierclust.py JinguNMF.py Kmeans.py",
+            "supports": "",
+            "python_dependencies": "numpy scipy sklearn",
+            "system_dependencies": "",
+            "api": "analytics",
+            "interface": "analytics",
+            "installation_script": ""
+        }
+}
