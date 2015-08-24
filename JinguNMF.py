@@ -12,17 +12,13 @@
 
 from analytics.utils import * 
 import numpy as np
-import time, os, json
+import time, json
 import scipy.sparse as sps
 import numpy.linalg as nla
 import math
 import scipy.optimize as opt
 from numpy import random
-import scipy.linalg as sla
 
-
-   
-#k means tempalte
 class JinguNMF(Algorithm):
     def __init__(self):
         super(JinguNMF, self).__init__()
@@ -38,10 +34,8 @@ class JinguNMF(Algorithm):
         self.inputData = np.genfromtxt(filepath['matrix.csv']['rootdir'] + 'matrix.csv', delimiter=',')      
         print 'matrixpath', filepath['matrix.csv']['rootdir'] + 'matrix.csv'
         W, H, info = NMF().run(self.inputData, int(self.numClusters))
-                
         self.clusters = np.argmax(W, axis = 1).astype(int)
         self.results = {'assignments.csv': self.clusters}
-
 
 class NMF_Base(object):
 

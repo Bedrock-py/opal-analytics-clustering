@@ -10,9 +10,13 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
+<<<<<<< HEAD
+from analytics.utils import Algorithm 
+=======
 from analytics.utils import * 
 
 import time, os
+>>>>>>> a71c93a0611904a761387203a29cfb852794aae1
 from sklearn.cluster import KMeans
 import numpy as np
 
@@ -30,9 +34,7 @@ class Kmeans(Algorithm):
 
     def compute(self, filepath, **kwargs):
         self.inputData = np.genfromtxt(filepath['matrix.csv']['rootdir'] + 'matrix.csv', delimiter=',')
-        
-        kmeansResult = KMeans(init='k-means++', n_clusters=int(self.numClusters), \
-            n_init=30, max_iter=1000)
+        kmeansResult = KMeans(init='k-means++', n_clusters=int(self.numClusters), n_init=30, max_iter=1000)
         kmeansResult.fit(self.inputData)
         self.clusters = kmeansResult.labels_.astype(int)
         self.results = {'assignments.csv': self.clusters}

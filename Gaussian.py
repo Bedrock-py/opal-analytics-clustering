@@ -12,10 +12,7 @@
 
 from analytics.utils import * 
 from sklearn.mixture import GMM
-
-import time, os
 import numpy as np
-
 
 class Gaussian(Algorithm):
     def __init__(self):
@@ -29,10 +26,9 @@ class Gaussian(Algorithm):
         self.parameters_spec = [ { "name" : "Clusters", "attrname" : "numClusters", "value" : 3, "type" : "input", "step": 1, "max": 15, "min": 1 }, 
             { "name" : "Covariance Type", "attrname" : "covType", "value" : "diag", "type" : "select", "options": ['spherical', 'tied', 'diag', 'full'] }] 
 
-    
+    # implements interface function
     def compute(self, filepath, **kwargs):
         self.inputData = np.genfromtxt(filepath['matrix.csv']['rootdir'] + 'matrix.csv', delimiter=',')
-        print 'gaussian started...'
         gaussianMixtureResult = GMM(n_components=self.numClusters, covariance_type=self.covType)
         gaussianMixtureResult.fit(self.inputData)
         self.clusters = gaussianMixtureResult.predict(self.inputData)

@@ -13,7 +13,6 @@
 from analytics.utils import * 
 from scipy.cluster.hierarchy import linkage, fcluster
 import numpy as np
-import time, os
 
 class Hierclust(Algorithm):
     def __init__(self):
@@ -30,9 +29,6 @@ class Hierclust(Algorithm):
     
     def compute(self, filepath, **kwargs):
         self.inputData = np.genfromtxt(filepath['matrix.csv']['rootdir'] + 'matrix.csv', delimiter=',')      
-
-        #surround with try/except to send helpful error message to user
-        print 'hclust started...'
         linkageOut = linkage(self.inputData, method=str(self.hierMethod), metric=str(self.hierMetric))
         self.clusters = fcluster(linkageOut, t=self.numClusters, criterion="maxclust").astype(int)
         self.results = {'assignments.csv':self.clusters}
