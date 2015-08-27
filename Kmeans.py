@@ -10,13 +10,7 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
-<<<<<<< HEAD
 from analytics.utils import Algorithm 
-=======
-from analytics.utils import * 
-
-import time, os
->>>>>>> a71c93a0611904a761387203a29cfb852794aae1
 from sklearn.cluster import KMeans
 import numpy as np
 
