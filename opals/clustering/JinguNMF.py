@@ -10,7 +10,7 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
-from analytics.utils import * 
+from bedrock.analytics.utils import * 
 import numpy as np
 import time, json
 import scipy.sparse as sps

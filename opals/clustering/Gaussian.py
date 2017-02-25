@@ -10,7 +10,7 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
-from analytics.utils import * 
+from bedrock.analytics.utils import * 
 from sklearn.mixture import GMM
 import numpy as np
 
@@ -29,6 +29,8 @@ class Gaussian(Algorithm):
     # implements interface function
     def compute(self, filepath, **kwargs):
         self.inputData = np.genfromtxt(filepath['matrix.csv']['rootdir'] + 'matrix.csv', delimiter=',')
+        if len(self.inputData.shape) == 1:
+            self.inputData.shape=[self.inputData.shape[0],1]
         gaussianMixtureResult = GMM(n_components=self.numClusters, covariance_type=self.covType)
         gaussianMixtureResult.fit(self.inputData)
         self.clusters = gaussianMixtureResult.predict(self.inputData)

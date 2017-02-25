@@ -10,7 +10,7 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
-from analytics.utils import * 
+from bedrock.analytics.utils import * 
 from scipy.cluster.hierarchy import linkage, fcluster
 import numpy as np
 
@@ -29,6 +29,8 @@ class Hierclust(Algorithm):
     
     def compute(self, filepath, **kwargs):
         self.inputData = np.genfromtxt(filepath['matrix.csv']['rootdir'] + 'matrix.csv', delimiter=',')      
+        if len(self.inputData.shape) == 1:
+            self.inputData.shape=[self.inputData.shape[0],1]
         linkageOut = linkage(self.inputData, method=str(self.hierMethod), metric=str(self.hierMetric))
         self.clusters = fcluster(linkageOut, t=self.numClusters, criterion="maxclust").astype(int)
         self.results = {'assignments.csv':self.clusters}

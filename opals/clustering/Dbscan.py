@@ -10,7 +10,7 @@
 # permission of the Georgia Tech Research Institute.
 #****************************************************************/
 
-from analytics.utils import Algorithm 
+from bedrock.analytics.utils import Algorithm 
 from scipy.spatial.distance import pdist, squareform
 import numpy as np
 
@@ -27,6 +27,8 @@ class Dbscan(Algorithm):
 
     def compute(self, filepath, **kwargs):
         self.inputData = np.genfromtxt(filepath['matrix.csv']['rootdir'] + 'matrix.csv', delimiter=',')      
+        if len(self.inputData.shape) == 1:
+            self.inputData.shape=[self.inputData.shape[0],1]
         outputSeeds=True
         data = self.inputData
         numSamples = np.shape(data)[0]
